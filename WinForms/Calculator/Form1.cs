@@ -57,22 +57,22 @@ namespace Calculator
             {
                 case 1:
                     {
-                        result.Text = Convert.ToString(Convert.ToInt32(result.Text) + (Convert.ToInt32(firstNumber)));
+                        result.Text = Convert.ToString(Convert.ToDouble(result.Text) + (Convert.ToDouble(firstNumber)));
                         break;
                     }
                 case 2:
                     {
-                        result.Text = Convert.ToString((Convert.ToInt32(firstNumber)) - (Convert.ToInt32(result.Text)) );
+                        result.Text = Convert.ToString((Convert.ToDouble(firstNumber)) - (Convert.ToDouble(result.Text)) );
                         break;
                     }
                 case 3:
                     {
-                        result.Text = Convert.ToString(Convert.ToInt32(result.Text) * (Convert.ToInt32(firstNumber)));
+                        result.Text = Convert.ToString(Convert.ToDouble(result.Text) * (Convert.ToDouble(firstNumber)));
                         break;
                     }
                 case 4:
                     {
-                        result.Text = Convert.ToString((Convert.ToInt32(firstNumber)) / (Convert.ToDouble(result.Text)));
+                        result.Text = Convert.ToString((Convert.ToDouble(firstNumber)) / (Convert.ToDouble(result.Text)));
                         break;
                     }
 
@@ -105,6 +105,10 @@ namespace Calculator
             {
                 result.Text = "";
             }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
             result.Text += "2";
 
         }
@@ -115,6 +119,10 @@ namespace Calculator
             {
                 result.Text = "";
             }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
             result.Text = result.Text + "3";
         }
         private void button4_Click(object sender, EventArgs e)
@@ -122,6 +130,10 @@ namespace Calculator
             if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
             {
                 result.Text = "";
+            }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
             }
             result.Text = result.Text + "4";
             
@@ -132,6 +144,10 @@ namespace Calculator
             {
                 result.Text = "";
             }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
             result.Text = result.Text + "5";
 
         }
@@ -141,6 +157,10 @@ namespace Calculator
             {
                 result.Text = "";
             }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
             result.Text = result.Text + "6";
         }
         private void button7_Click(object sender, EventArgs e)
@@ -148,6 +168,10 @@ namespace Calculator
             if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
             {
                 result.Text = "";
+            }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
             }
             result.Text = result.Text + "7";
         }
@@ -158,6 +182,10 @@ namespace Calculator
             {
                 result.Text = "";
             }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
             result.Text = result.Text + "8";
         }
 
@@ -167,6 +195,10 @@ namespace Calculator
             {
                 result.Text = "";
             }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
             result.Text = result.Text + "9";
         }
         private void button18_Click(object sender, EventArgs e)
@@ -174,6 +206,10 @@ namespace Calculator
             if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
             {
                 result.Text = "";
+            }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
             }
             result.Text = result.Text + "0";
         }
@@ -195,6 +231,19 @@ namespace Calculator
                     result.Text = result.Text + text[i];
                 }
             }
+        }
+
+        private void btn_dot(object sender, EventArgs e)
+        {
+            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+            {
+                result.Text = "";
+            }
+            else if (result.Text == "0")
+            {
+                result.Text = string.Empty;
+            }
+            result.Text = result.Text + ".";
         }
     }
 }
