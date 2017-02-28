@@ -17,6 +17,10 @@ namespace employeeform
             InitializeComponent();
         }
 
+        public Employee Employee { get; set; }
+        public Form1 MainForm { get; set; }
+        public developer4 dv4 { get; set; }
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -27,8 +31,24 @@ namespace employeeform
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             developer dv = new developer();
+           
+            
+            dv.secondform = this;
             dv.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            MainForm.Show();
+        }
+
+        private void second_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

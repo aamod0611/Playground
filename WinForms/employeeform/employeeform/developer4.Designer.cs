@@ -91,6 +91,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Meets Expectations";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton4
             // 

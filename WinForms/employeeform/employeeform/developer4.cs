@@ -17,6 +17,10 @@ namespace employeeform
             InitializeComponent();
         }
 
+        //public Employee Employee { get; set; }
+        //public Form1 MainForm { get; set; }
+        public developer3 dev3 { get; set; }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -25,11 +29,18 @@ namespace employeeform
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            developer3 dv3 = new developer3();
-            dv3.Show();
+            dev3.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            second sf = new second();
+            sf.dv4 = this;
+            sf.Show();
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
 
         }

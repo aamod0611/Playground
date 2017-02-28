@@ -10,23 +10,48 @@ using System.Windows.Forms;
 
 namespace employeeform
 {
+    
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+            selectedEmployee = new Employee();  
         }
+
+        Employee selectedEmployee = null;
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
+            selectedEmployee.Name = textBox1.Text;
+            selectedEmployee.Designation = textBox2.Text;
+
             second sf = new second();
+            sf.Employee = selectedEmployee;
+            sf.MainForm = this;
             sf.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = selectedEmployee.Name;
+            textBox2.Text = selectedEmployee.Designation;
         }
     }
 }

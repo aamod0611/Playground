@@ -149,6 +149,7 @@
             this.Controls.Add(this.radioButton1);
             this.Name = "developer3";
             this.Text = "developer3";
+            this.Load += new System.EventHandler(this.developer3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
