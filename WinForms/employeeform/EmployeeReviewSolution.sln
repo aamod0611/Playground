@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "employeeform", "employeeform\employeeform.csproj", "{48D1E8AE-7D91-45C8-BAA2-5B8F2FD3B5C3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyCode", "MyCode", "{BB4B3D13-394F-4E48-BA6D-64362C6AFD80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupervisorCode", "SupervisorCode", "{BB39F7B7-FBC4-44FE-818B-F2F3C6C690D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeReview", "EmployeeReview\EmployeeReview.csproj", "{DEC851FB-6BA0-4A97-BBFE-FEF699765841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +21,16 @@ Global
 		{48D1E8AE-7D91-45C8-BAA2-5B8F2FD3B5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48D1E8AE-7D91-45C8-BAA2-5B8F2FD3B5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48D1E8AE-7D91-45C8-BAA2-5B8F2FD3B5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC851FB-6BA0-4A97-BBFE-FEF699765841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC851FB-6BA0-4A97-BBFE-FEF699765841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC851FB-6BA0-4A97-BBFE-FEF699765841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC851FB-6BA0-4A97-BBFE-FEF699765841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{48D1E8AE-7D91-45C8-BAA2-5B8F2FD3B5C3} = {BB4B3D13-394F-4E48-BA6D-64362C6AFD80}
+		{DEC851FB-6BA0-4A97-BBFE-FEF699765841} = {BB39F7B7-FBC4-44FE-818B-F2F3C6C690D1}
 	EndGlobalSection
 EndGlobal
