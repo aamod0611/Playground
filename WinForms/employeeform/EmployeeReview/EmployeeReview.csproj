@@ -58,12 +58,25 @@
     <Compile Include="Forms\DeveloperSkillsForm.Designer.cs">
       <DependentUpon>DeveloperSkillsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SummaryForm.Designer.cs">
+      <DependentUpon>SummaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TechnicalSkillsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TechnicalSkillsForm.Designer.cs">
+      <DependentUpon>TechnicalSkillsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeveloperSkills.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DeveloperSkillsForm.resx">
       <DependentUpon>DeveloperSkillsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SummaryForm.resx">
+      <DependentUpon>SummaryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

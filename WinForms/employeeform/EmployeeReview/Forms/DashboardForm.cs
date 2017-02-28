@@ -20,7 +20,7 @@ namespace EmployeeReview.Forms
             employeeBindingSource.DataSource = currentEmployee;
         }
 
- 
+    
 
     
 
@@ -32,7 +32,11 @@ namespace EmployeeReview.Forms
         private void btnDevSkills_Click(object sender, EventArgs e)
         {
             //open devskills form
-            DeveloperSkillsForm devForm = new DeveloperSkillsForm();
+            DeveloperSkillsForm devForm = new DeveloperSkillsForm((Employee)employeeBindingSource.DataSource);
+            this.Hide();
+            devForm.ShowDialog();
+            btnViewSummary.Visible = true;
+            this.Show();
         }
 
         private void btnTechSkills_Click(object sender, EventArgs e)
@@ -42,7 +46,10 @@ namespace EmployeeReview.Forms
 
         private void btnViewSummary_Click(object sender, EventArgs e)
         {
-
+            SummaryForm summary = new SummaryForm((Employee)employeeBindingSource.DataSource);
+            this.Hide();
+            summary.ShowDialog();
+            this.Show();
         }
 
         private void DashboardForm_Load(object sender, EventArgs e)

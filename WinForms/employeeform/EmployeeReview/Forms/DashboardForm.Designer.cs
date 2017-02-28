@@ -64,6 +64,7 @@
             this.btnViewSummary.TabIndex = 2;
             this.btnViewSummary.Text = "View Summary";
             this.btnViewSummary.UseVisualStyleBackColor = true;
+            this.btnViewSummary.Visible = false;
             this.btnViewSummary.Click += new System.EventHandler(this.btnViewSummary_Click);
             // 
             // DashboardForm

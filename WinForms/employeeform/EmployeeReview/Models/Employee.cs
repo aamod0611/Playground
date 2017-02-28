@@ -11,25 +11,26 @@ namespace EmployeeReview.Models
         public string Name { get; set; }
         public string Designation { get; set; }
 
-        public DevSkills DeveloperSkills { get; set; }
-        public TechSkills TechnicalSkills { get; set; }
+        public DevSkillsRatings DeveloperSkills { get; set; }
+        public TechSkillsRatings TechnicalSkills { get; set; }
 
         public Employee()
         {
-            DeveloperSkills = new DevSkills();
-            TechnicalSkills = new TechSkills();
+            DeveloperSkills = new DevSkillsRatings();
+            TechnicalSkills = new TechSkillsRatings();
         }
     }
 
-    public class DevSkills
+    public class DevSkillsRatings
     {
         public int CodingSkills { get; set; }
         public int TroubleShooting { get; set;}
         public int QualityAssurance { get; set; }
         public int TimeLogging { get; set; }
+        public int RequirementsAnalysis { get; set; }
     }
 
-    public class TechSkills
+    public class TechSkillsRatings
     {
         public int CSharp { get; set; }
         public int Java { get; set; }

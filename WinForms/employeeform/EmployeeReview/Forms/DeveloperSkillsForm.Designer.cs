@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.btnNext = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.lblDevSkillName = new System.Windows.Forms.Label();
+            this.rbUnsatisfactory = new System.Windows.Forms.RadioButton();
+            this.rbNeedsImprovement = new System.Windows.Forms.RadioButton();
+            this.rbMeetsExpectations = new System.Windows.Forms.RadioButton();
+            this.rbAboveExpectations = new System.Windows.Forms.RadioButton();
+            this.rbOutstanding = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnNext
@@ -47,86 +47,85 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // label2
+            // lblDevSkillName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 20);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Coding Skills :";
+            this.lblDevSkillName.AutoSize = true;
+            this.lblDevSkillName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDevSkillName.Location = new System.Drawing.Point(12, 9);
+            this.lblDevSkillName.Name = "lblDevSkillName";
+            this.lblDevSkillName.Size = new System.Drawing.Size(0, 20);
+            this.lblDevSkillName.TabIndex = 16;
             // 
-            // radioButton5
+            // rbUnsatisfactory
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(55, 206);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(92, 17);
-            this.radioButton5.TabIndex = 14;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Unsatisfactory";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbUnsatisfactory.AutoSize = true;
+            this.rbUnsatisfactory.Location = new System.Drawing.Point(55, 206);
+            this.rbUnsatisfactory.Name = "rbUnsatisfactory";
+            this.rbUnsatisfactory.Size = new System.Drawing.Size(92, 17);
+            this.rbUnsatisfactory.TabIndex = 14;
+            this.rbUnsatisfactory.TabStop = true;
+            this.rbUnsatisfactory.Text = "Unsatisfactory";
+            this.rbUnsatisfactory.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rbNeedsImprovement
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(55, 167);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(120, 17);
-            this.radioButton4.TabIndex = 13;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Needs Improvement";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbNeedsImprovement.AutoSize = true;
+            this.rbNeedsImprovement.Location = new System.Drawing.Point(55, 167);
+            this.rbNeedsImprovement.Name = "rbNeedsImprovement";
+            this.rbNeedsImprovement.Size = new System.Drawing.Size(120, 17);
+            this.rbNeedsImprovement.TabIndex = 13;
+            this.rbNeedsImprovement.TabStop = true;
+            this.rbNeedsImprovement.Text = "Needs Improvement";
+            this.rbNeedsImprovement.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbMeetsExpectations
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(55, 130);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(118, 17);
-            this.radioButton3.TabIndex = 12;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Meets Expectations";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbMeetsExpectations.AutoSize = true;
+            this.rbMeetsExpectations.Location = new System.Drawing.Point(55, 130);
+            this.rbMeetsExpectations.Name = "rbMeetsExpectations";
+            this.rbMeetsExpectations.Size = new System.Drawing.Size(118, 17);
+            this.rbMeetsExpectations.TabIndex = 12;
+            this.rbMeetsExpectations.TabStop = true;
+            this.rbMeetsExpectations.Text = "Meets Expectations";
+            this.rbMeetsExpectations.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbAboveExpectations
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(55, 91);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(120, 17);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Above Expectations";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbAboveExpectations.AutoSize = true;
+            this.rbAboveExpectations.Location = new System.Drawing.Point(55, 91);
+            this.rbAboveExpectations.Name = "rbAboveExpectations";
+            this.rbAboveExpectations.Size = new System.Drawing.Size(120, 17);
+            this.rbAboveExpectations.TabIndex = 11;
+            this.rbAboveExpectations.TabStop = true;
+            this.rbAboveExpectations.Text = "Above Expectations";
+            this.rbAboveExpectations.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbOutstanding
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(55, 57);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(82, 17);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Outstanding";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbOutstanding.AutoSize = true;
+            this.rbOutstanding.Location = new System.Drawing.Point(55, 57);
+            this.rbOutstanding.Name = "rbOutstanding";
+            this.rbOutstanding.Size = new System.Drawing.Size(82, 17);
+            this.rbOutstanding.TabIndex = 10;
+            this.rbOutstanding.TabStop = true;
+            this.rbOutstanding.Text = "Outstanding";
+            this.rbOutstanding.UseVisualStyleBackColor = true;
             // 
-            // DeveloperSkills
+            // DeveloperSkillsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(254, 307);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.lblDevSkillName);
+            this.Controls.Add(this.rbUnsatisfactory);
+            this.Controls.Add(this.rbNeedsImprovement);
+            this.Controls.Add(this.rbMeetsExpectations);
+            this.Controls.Add(this.rbAboveExpectations);
+            this.Controls.Add(this.rbOutstanding);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DeveloperSkills";
+            this.Name = "DeveloperSkillsForm";
             this.Text = "DeveloperSkills";
             this.Load += new System.EventHandler(this.DeveloperSkills_Load);
             this.ResumeLayout(false);
@@ -137,11 +136,11 @@
         #endregion
 
         private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label lblDevSkillName;
+        private System.Windows.Forms.RadioButton rbUnsatisfactory;
+        private System.Windows.Forms.RadioButton rbNeedsImprovement;
+        private System.Windows.Forms.RadioButton rbMeetsExpectations;
+        private System.Windows.Forms.RadioButton rbAboveExpectations;
+        private System.Windows.Forms.RadioButton rbOutstanding;
     }
 }
