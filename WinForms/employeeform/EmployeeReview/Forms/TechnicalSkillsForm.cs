@@ -21,10 +21,10 @@ namespace EmployeeReview.Forms
             SelectedEmployee = employee;
 
             _techSkillsList = new List<Technicalskills>();
-            _techSkillsList.Add(new Technicalskills() { SkillName = "C#", SkillDescription = "" });
+            _techSkillsList.Add(new Technicalskills() { SkillName = "CSharp", SkillDescription = "" });
             _techSkillsList.Add(new Technicalskills() { SkillName = "java", SkillDescription = "" });
             _techSkillsList.Add(new Technicalskills() { SkillName = "Angular js", SkillDescription = "" });
-            _techSkillsList.Add(new Technicalskills() { SkillName = "Java", SkillDescription = "" });
+            _techSkillsList.Add(new Technicalskills() { SkillName = "nodejs", SkillDescription = "" });
         }
 
         private List<Technicalskills> _techSkillsList;
@@ -73,9 +73,8 @@ namespace EmployeeReview.Forms
             }
             else
             {
-
                 //missing 
-               
+                lbltechSkillName.Text = _techSkillsList[currentSkillsId].SkillName;
                 ResetOptions();
 
 
@@ -87,18 +86,18 @@ namespace EmployeeReview.Forms
         {
             switch (_techSkillsList[currentSkillsId].SkillName)
             {
-                case "C#":
+                case "CSharp":
                     SelectedEmployee.TechnicalSkills.CSharp = rating;
                     break;
-                case "Java":
+                case "java":
                     SelectedEmployee.TechnicalSkills.Java = rating;
                     break;
                 case "Angular js":
                     SelectedEmployee.TechnicalSkills.AngularJs = rating;
                     break;
-                case "Node js":
+                case "nodejs":
                     SelectedEmployee.TechnicalSkills.NodeJs = rating;
-                    break;               
+                    break;
                 default: break;
             }
         }
@@ -141,7 +140,7 @@ namespace EmployeeReview.Forms
         private void TechnicalSkillsForm_Load(object sender, EventArgs e)
         {
             //missing
-           
+            lbltechSkillName.Text = _techSkillsList[currentSkillsId].SkillName;
             ResetOptions();
         }
     }

@@ -33,6 +33,7 @@
             this.rb_Intermediate = new System.Windows.Forms.RadioButton();
             this.rb_beginner = new System.Windows.Forms.RadioButton();
             this.btn_next = new System.Windows.Forms.Button();
+            this.lbltechSkillName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rb_Expert
@@ -91,11 +92,20 @@
             this.btn_next.UseVisualStyleBackColor = true;
             this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
+            // lbltechSkillName
+            // 
+            this.lbltechSkillName.AutoSize = true;
+            this.lbltechSkillName.Location = new System.Drawing.Point(13, 13);
+            this.lbltechSkillName.Name = "lbltechSkillName";
+            this.lbltechSkillName.Size = new System.Drawing.Size(0, 13);
+            this.lbltechSkillName.TabIndex = 5;
+            // 
             // TechnicalSkillsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 261);
+            this.Controls.Add(this.lbltechSkillName);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.rb_beginner);
             this.Controls.Add(this.rb_Intermediate);
@@ -118,5 +128,6 @@
         private System.Windows.Forms.RadioButton rb_Intermediate;
         private System.Windows.Forms.RadioButton rb_beginner;
         private System.Windows.Forms.Button btn_next;
+        private System.Windows.Forms.Label lbltechSkillName;
     }
 }
