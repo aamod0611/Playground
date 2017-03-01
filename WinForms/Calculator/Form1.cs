@@ -84,135 +84,142 @@ namespace Calculator
             result.Text = "0";
             firstNumber = "";
             operation = "";
+           
         }
         private void btnNum_1_Click(object sender, EventArgs e)
         {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if(result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text += "1";
-
-        }
-
-        private void btnNum_2_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text += "2";
-
-        }
-
-        private void btnNum_3_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "3";
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "4";
+            //if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+            //{
+            //    result.Text = "";
+            //}
+            //else if(result.Text == "0")
+            //{
+            //    result.Text = string.Empty;
+            //}
+            //result.Text += "1";
+            if (result.Text == "0")
+                   {
+                       result.Text = string.Empty;
+                   }
+                Button button = (Button)sender;
+            result.Text = result.Text + button.Text;
             
         }
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "5";
 
-        }
-        private void button6_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "6";
-        }
-        private void button7_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "7";
-        }
+        //private void btnNum_2_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text += "2";
 
-        private void button15_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "8";
-        }
+        //}
 
-        private void button16_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "9";
-        }
-        private void button18_Click(object sender, EventArgs e)
-        {
-            if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
-            {
-                result.Text = "";
-            }
-            else if (result.Text == "0")
-            {
-                result.Text = string.Empty;
-            }
-            result.Text = result.Text + "0";
-        }
+        //private void btnNum_3_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "3";
+        //}
+        //private void button4_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "4";
+            
+        //}
+        //private void button5_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "5";
+
+        //}
+        //private void button6_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "6";
+        //}
+        //private void button7_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "7";
+        //}
+
+        //private void button15_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "8";
+        //}
+
+        //private void button16_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "9";
+        //}
+        //private void button18_Click(object sender, EventArgs e)
+        //{
+        //    if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
+        //    {
+        //        result.Text = "";
+        //    }
+        //    else if (result.Text == "0")
+        //    {
+        //        result.Text = string.Empty;
+        //    }
+        //    result.Text = result.Text + "0";
+        //}
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -233,7 +240,7 @@ namespace Calculator
             }
         }
 
-        private void btn_dot(object sender, EventArgs e)
+        private void btn_dec_click(object sender, EventArgs e)
         {
             if (result.Text == "+" || result.Text == "-" || result.Text == "*" || result.Text == "/")
             {
@@ -244,6 +251,16 @@ namespace Calculator
                 result.Text = string.Empty;
             }
             result.Text = result.Text + ".";
+            if (firstNumber.Contains("."))
+            {
+                btn_dec.Enabled = false;
+            }
+            btn_dec.Enabled = true;
         }
+
+        //private void btn_dot(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }
