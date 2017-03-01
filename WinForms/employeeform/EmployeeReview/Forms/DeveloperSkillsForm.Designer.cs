@@ -110,6 +110,7 @@
             this.rbOutstanding.TabStop = true;
             this.rbOutstanding.Text = "Outstanding";
             this.rbOutstanding.UseVisualStyleBackColor = true;
+            this.rbOutstanding.CheckedChanged += new System.EventHandler(this.rbOutstanding_CheckedChanged);
             // 
             // DeveloperSkillsForm
             // 

@@ -40,6 +40,7 @@
             this.lbl_Summary.Size = new System.Drawing.Size(35, 13);
             this.lbl_Summary.TabIndex = 0;
             this.lbl_Summary.Text = "label1";
+            this.lbl_Summary.Click += new System.EventHandler(this.lbl_Summary_Click);
             // 
             // SummaryForm
             // 

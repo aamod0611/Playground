@@ -23,6 +23,8 @@ namespace EmployeeReview.Forms
             _devSkillsList.Add(new DeveloperSkills() { SkillName = "Coding Skills", SkillDescription = "" });
             _devSkillsList.Add(new DeveloperSkills() { SkillName = "TroubleShooting Skills", SkillDescription = "" });
             _devSkillsList.Add(new DeveloperSkills() { SkillName = "RequirementsAnalysis", SkillDescription = "" });
+            _devSkillsList.Add(new DeveloperSkills() { SkillName = "timelogging", SkillDescription = "" });
+            _devSkillsList.Add(new DeveloperSkills() { SkillName = "QualityAssurance", SkillDescription = "" });
         }
         //Private Class variabled : Camel Casing with _ as prefix
         private List<DeveloperSkills> _devSkillsList;
@@ -53,6 +55,7 @@ namespace EmployeeReview.Forms
             {
                 lblDevSkillName.Text = _devSkillsList[currentSkillsId].SkillName;
                 ResetOptions();
+                
             }
 
         }
@@ -69,6 +72,12 @@ namespace EmployeeReview.Forms
                     break;
                 case "RequirementsAnalysis":
                     SelectedEmployee.DeveloperSkills.RequirementsAnalysis = rating;
+                    break;
+                case "timelogging":
+                    SelectedEmployee.DeveloperSkills.TimeLogging = rating;
+                    break;
+                case "QualityAssurance":
+                    SelectedEmployee.DeveloperSkills.QualityAssurance = rating;
                     break;
                 default: break;
             }
@@ -115,6 +124,11 @@ namespace EmployeeReview.Forms
         {
             ResetOptions();
             lblDevSkillName.Text = _devSkillsList[currentSkillsId].SkillName;
+        }
+
+        private void rbOutstanding_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

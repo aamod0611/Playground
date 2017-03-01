@@ -33,9 +33,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDesignation = new System.Windows.Forms.TextBox();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +75,10 @@
             this.txtDesignation.Size = new System.Drawing.Size(186, 20);
             this.txtDesignation.TabIndex = 8;
             // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(EmployeeReview.Models.Employee);
+            // 
             // txtName
             // 
             this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Name", true));
@@ -82,6 +86,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(186, 20);
             this.txtName.TabIndex = 7;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // btnLogin
             // 
@@ -92,10 +97,6 @@
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(EmployeeReview.Models.Employee);
             // 
             // LoginForm
             // 

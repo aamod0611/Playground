@@ -30,10 +30,21 @@ namespace EmployeeReview.Forms
             sb.AppendLine("----------Developer Skills---------");
             sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.CodingSkills)+"  :" + _selectedEmployee.DeveloperSkills.CodingSkills);
             sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.TroubleShooting) + "  :" + _selectedEmployee.DeveloperSkills.TroubleShooting);
-            sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.QualityAssurance) + "  :" + _selectedEmployee.DeveloperSkills.QualityAssurance);
-            sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.TimeLogging) + "  :" + _selectedEmployee.DeveloperSkills.TimeLogging);
             sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.RequirementsAnalysis) + "  :" + _selectedEmployee.DeveloperSkills.RequirementsAnalysis);
+            sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.TimeLogging) + "  :" + _selectedEmployee.DeveloperSkills.TimeLogging);
+            sb.AppendLine("---- " + nameof(_selectedEmployee.DeveloperSkills.QualityAssurance) + "  :" + _selectedEmployee.DeveloperSkills.QualityAssurance);
+            sb.AppendLine("----------Technical Skills---------");
+            sb.AppendLine("---- " + nameof(_selectedEmployee.TechnicalSkills.CSharp) + "  :" + _selectedEmployee.TechnicalSkills.CSharp);
+            sb.AppendLine("---- " + nameof(_selectedEmployee.TechnicalSkills.Java) + "  :" + _selectedEmployee.TechnicalSkills.Java);
+            sb.AppendLine("---- " + nameof(_selectedEmployee.TechnicalSkills.AngularJs) + "  :" + _selectedEmployee.TechnicalSkills.AngularJs);
+            sb.AppendLine("---- " + nameof(_selectedEmployee.TechnicalSkills.NodeJs) + "  :" + _selectedEmployee.TechnicalSkills.NodeJs);
+
             lbl_Summary.Text = sb.ToString();
+        }
+
+        private void lbl_Summary_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

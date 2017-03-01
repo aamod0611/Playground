@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Models\DeveloperSkills.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Technicalskills.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\DashboardForm.resx">

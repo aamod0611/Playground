@@ -41,7 +41,11 @@ namespace EmployeeReview.Forms
 
         private void btnTechSkills_Click(object sender, EventArgs e)
         {
-
+            TechnicalSkillsForm techform = new TechnicalSkillsForm ((Employee)employeeBindingSource.DataSource);
+            this.Hide();
+            techform.ShowDialog();
+            btnViewSummary.Visible = true;
+            this.Show();
         }
 
         private void btnViewSummary_Click(object sender, EventArgs e)
