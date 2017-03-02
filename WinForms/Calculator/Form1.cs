@@ -26,9 +26,11 @@ namespace Calculator
 
         private void btnOperation_Add_Click(object sender, EventArgs e)
         {
-            firstNumber =result.Text;
-            result.Text = "+";
-            operationid = 1;
+            //firstNumber =result.Text;
+            //result.Text = "+";
+            //operationid = 1;
+            Button button = (Button)sender;
+            result.Text = result.Text + button.Text;
         }
         private void opration_sub1(object sender, EventArgs e)
         {
@@ -72,6 +74,7 @@ namespace Calculator
                     }
                 case 4:
                     {
+                        
                         result.Text = Convert.ToString((Convert.ToDouble(firstNumber)) / (Convert.ToDouble(result.Text)));
                         break;
                     }

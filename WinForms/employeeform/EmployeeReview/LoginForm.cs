@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace EmployeeReview
@@ -16,6 +17,7 @@ namespace EmployeeReview
         public LoginForm()
         {
             InitializeComponent();
+           
             LoggedInEmployee = new Models.Employee();
         }
 
@@ -29,6 +31,20 @@ namespace EmployeeReview
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=CCI-LPT-06\\MSSQLSERVER2K14E;Initial Catalog=employeeform;User ID=sa;Password=sa123456#";
+            SqlCommand cmd = new SqlCommand("Insert into login(name,designation)values('" + txtName.Text + "','" + txtDesignation.Text + "')",conn);
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Connection Open ! ");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot open connection ! "+ex.Message);
+            }
             DashboardForm dashform = new DashboardForm(LoggedInEmployee);
             this.Hide();
             dashform.Show();
@@ -40,6 +56,11 @@ namespace EmployeeReview
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDesignation_TextChanged(object sender, EventArgs e)
         {
 
         }

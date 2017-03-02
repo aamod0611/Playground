@@ -74,6 +74,7 @@
             this.txtDesignation.Name = "txtDesignation";
             this.txtDesignation.Size = new System.Drawing.Size(186, 20);
             this.txtDesignation.TabIndex = 8;
+            this.txtDesignation.TextChanged += new System.EventHandler(this.txtDesignation_TextChanged);
             // 
             // employeeBindingSource
             // 

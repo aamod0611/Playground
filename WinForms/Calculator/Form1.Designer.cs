@@ -80,7 +80,7 @@
             this.opration_sub.TabIndex = 10;
             this.opration_sub.Text = "-";
             this.opration_sub.UseVisualStyleBackColor = true;
-            this.opration_sub.Click += new System.EventHandler(this.opration_sub1);
+            this.opration_sub.Click += new System.EventHandler(this.btnOperation_Add_Click);
             // 
             // opration_div
             // 
@@ -90,7 +90,7 @@
             this.opration_div.TabIndex = 11;
             this.opration_div.Text = "/";
             this.opration_div.UseVisualStyleBackColor = true;
-            this.opration_div.Click += new System.EventHandler(this.button7_Click_1);
+            this.opration_div.Click += new System.EventHandler(this.btnOperation_Add_Click);
             // 
             // opration_mult
             // 
@@ -100,7 +100,7 @@
             this.opration_mult.TabIndex = 12;
             this.opration_mult.Text = "*";
             this.opration_mult.UseVisualStyleBackColor = true;
-            this.opration_mult.Click += new System.EventHandler(this.button4_Click_1);
+            this.opration_mult.Click += new System.EventHandler(this.btnOperation_Add_Click);
             // 
             // btn3
             // 
