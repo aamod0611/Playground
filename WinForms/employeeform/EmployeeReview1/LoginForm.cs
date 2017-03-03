@@ -1,4 +1,4 @@
-﻿using EmployeeReview.Forms;
+﻿using EmployeeReview1.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,15 +10,44 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace EmployeeReview
+
+namespace EmployeeReview1
 {
     public partial class LoginForm : Form
     {
         public LoginForm()
         {
             InitializeComponent();
-           
+            fillcombo();
+
             LoggedInEmployee = new Models.Employee();
+        }
+
+        void fillcombo()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=CCI-LPT-06\\MSSQLSERVER2K14E;Initial Catalog=employeeform;User ID=sa;Password=sa123456#";
+            SqlCommand cmd = new SqlCommand("select * from designation", conn);
+            SqlDataReader myReader;
+            
+
+            try
+            {
+                conn.Open();
+                myReader = cmd.ExecuteReader();
+                while (myReader.Read()){
+                    string sname = myReader.GetString(1);
+                    comboBox_designation.Items.Add(sname);
+                    comboBox_designation.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                }
+                MessageBox.Show("Connection Open ! ");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot open connection ! " + ex.Message);
+            }
         }
 
         //Pascal Naming Convention
@@ -33,7 +62,7 @@ namespace EmployeeReview
         {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=CCI-LPT-06\\MSSQLSERVER2K14E;Initial Catalog=employeeform;User ID=sa;Password=sa123456#";
-            SqlCommand cmd = new SqlCommand("Insert into login (name, designation) values ('" + txtName.Text + "','" + txtDesignation.Text + "')",conn);
+            SqlCommand cmd = new SqlCommand("Insert into login(name,designation)values('" + txtName.Text + "','" + txtDesignation.Text + "')",conn);
             try
             {
                 conn.Open();
@@ -63,6 +92,11 @@ namespace EmployeeReview
         private void txtDesignation_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox_designation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
