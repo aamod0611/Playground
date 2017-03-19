@@ -72,6 +72,7 @@
             this.MinimizeBox = false;
             this.Name = "DeveloperSkillsForm";
             this.Text = "DeveloperSkills";
+            this.Load += new System.EventHandler(this.DeveloperSkillsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

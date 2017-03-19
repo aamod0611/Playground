@@ -17,6 +17,7 @@ namespace EmployeeReview1.Forms
         public DeveloperSkillsForm(Employee employee)
         {
             InitializeComponent();
+            fillcombo();
             fetchingdata();
             //SelectedEmployee = employee;
 
@@ -75,6 +76,37 @@ namespace EmployeeReview1.Forms
                 this.Controls.Add(radioButtons[i]);
             }
         }
+        void fillcombo()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=CCI-LPT-06\\MSSQLSERVER2K14E;Initial Catalog=employeeform;User ID=sa;Password=sa123456#";
+            SqlCommand cmd = new SqlCommand("select * from devskills", conn);
+            SqlDataReader myReader;
+
+
+            try
+            {
+                conn.Open();
+                myReader = cmd.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string sname = myReader.GetString(1);
+                   
+                   
+                }
+                MessageBox.Show("Connection Open ! ");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot open connection ! " + ex.Message);
+            }
+        }
+
+        private void DeveloperSkillsForm_Load(object sender, EventArgs e)
+        {
+
+        }
 
 
 
@@ -110,7 +142,7 @@ namespace EmployeeReview1.Forms
         //    {
         //        lblDevSkillName.Text = _devSkillsList[currentSkillsId].SkillName;
         //        ResetOptions();
-                
+
         //    }
 
         //}
