@@ -1,0 +1,29 @@
+﻿@model ToDO_App_CodeFirst.Models.ToDoModels
+    @{
+        ViewBag.Title = "TodoIndex";
+    }
+
+    <h2>TodoIndex</h2>
+
+    @using (Html.BeginForm("AddItem", "ToDo", new { Returnurl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.HiddenFor(x => x.Id) //to store deletekey value
+        <div class="col-sm-12">
+            @Html.TextBoxFor(m => m.Taskname, new { @class = "form-control" })
+            <input type="Submit" value="Add" />
+            <br />
+            @foreach (var nm in Model.TaskList)
+            {
+                if (nm.TaskName != null)
+                { 
+                    @Html.Label(nm.TaskName, new { @class = "additem" });
+                    <button type="button" value="Edit" onclick="location.href='@Url.Action("EditItem", "ToDo", new { Id = @nm.Id})'">Edit</button>
+                                <button type="button" value="Remove" onclick="location.href='@Url.Action("RemoveItem", "ToDo", new { Id = @nm.Id })'">Remove</button>
+                                <br />
+                }
+
+            }
+
+
+        </div>
+    }
