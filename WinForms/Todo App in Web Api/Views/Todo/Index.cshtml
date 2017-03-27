@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index1</h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:59857/api/TodoDetails", //URI
+
+            dataType: "json",
+            success: function (data) {
+                debugger;
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+
+                $.each(myJsonObject, function (i, mobj) {
+                    $("#listdata").append('<li>' + mobj.TaskName + "<input type='button' value='Remove' onclick='removeitem(" + mobj.Id + ")'/>" + "<input type='button' value='Edit' id='edit' onclick='EditDetails(" + mobj.Id + ",\"" + mobj.TaskName + "\")'/>" + '</li>');
+
+                });
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    });
+
+    function add_details(Id) {
+           $.ajax({
+                type: "POST", //HTTP POST Method
+                url: "http://localhost:59857/api/TodoDetails",
+                data: { //Passing data
+                    TaskName: $("#txtListInput").val(), //Reading text box values using Jquery
+                }
+            });
+    }
+
+    function removeitem(Id) //you are passing id from database using click function
+    {
+        $.ajax({
+                type: "DELETE",
+                url: "http://localhost:59857/api/TodoDetails" + "/" + Id,
+        });
+        alert("hi");
+    }
+
+    function EditDetails(Id, TaskName) {
+        $('#txtListInput').val(TaskName);
+        document.getElementById("hiddenID").value = Id;
+    }
+
+    function update_details() {
+     
+        var item = JSON.stringify(document.getElementById('txtListInput').value);
+        var Id = document.getElementById("hiddenID").value;
+        
+        $.ajax({
+                type: "PUT", //HTTP Put Method
+                url: "http://localhost:59857/api/TodoDetails" + "/" + Id,
+                contentType: "application/json; charset=utf-8",
+                data: item,
+                dataType: JSON,
+                    
+        });
+        alert("hello");
+    }
+</script>
+
+<script>
+
+
+</script>
+
+
+<div>
+
+    <input type="text" id="txtListInput" />
+    <input type="button" value="Add" onclick="add_details(0)" />
+    <input type="button" value="Update" onclick="update_details()" />
+
+    <div style="text-align:center;">
+        <ul id="listdata"></ul>
+    </div>
+    <input type="hidden" name="ID" id="hiddenID" value="">
+</div>     
