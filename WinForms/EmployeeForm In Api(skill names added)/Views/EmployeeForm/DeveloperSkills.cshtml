@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "DeveloperSkills";
+}
+
+<h2>DeveloperSkills</h2>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+      $(document).ready(function () {
+          alert("hi");
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:63333/api/EmployeeApi/GetRatings/1", //URI
+
+            dataType: "json",
+            success: function (data) {
+                //  alert(data);
+
+                debugger;
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+                // alert(datavalue);
+                // alert(myJsonObject);
+
+                $.each(myJsonObject, function (i, mobj) {
+                    //alert(mobj.RatingNames);
+
+                    $("#radio").append('<br> <label> <input type="radio" name="optradio" value="' + mobj.RatingsID + '">' + mobj.RatingNames + '</label>');
+                  
+
+                });
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+        alert("hello");
+    });
+
+
+
+
+
+
+      $(document).ready(function () {
+          alert("hi");
+          $.ajax({
+              type: "GET",
+              url: "http://localhost:63333/api/EmployeeApi/GetSkillNames/1", //URI
+
+              dataType: "json",
+              success: function (data) {
+                  //  alert(data);
+
+                  debugger;
+                  var datavalue = data;
+                  var myJsonObject = datavalue;
+                  contentType: "application/json";
+                  // alert(datavalue);
+                  // alert(myJsonObject);
+
+                  $.each(myJsonObject, function (i, mobj) {
+                      alert(mobj.SkillNames);
+
+                      $("#skills").append('<br> <label> ' + mobj.SkillNames + '</label>');
+
+
+                  });
+
+              },
+              error: function (xhr) {
+                  alert(xhr.responseText);
+              }
+          });
+          alert("hello");
+      });
+
+</script>
+
+
+
+<div id="skills">
+
+</div>
+<div id="radio">
+   
+</div>
