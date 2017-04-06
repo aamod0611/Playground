@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Summary";
+}
+
+<h2>Summary</h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        alert("hi");
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:63333/api/EmployeeApi/GetSummary/" + @Session["empid"], //URI
+
+            dataType: "json",
+            success: function (data) {
+                //  alert(data);
+
+                debugger;
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+                // alert(datavalue);
+                // alert(myJsonObject);
+
+                $.each(myJsonObject, function (i, mobj) {
+                    //alert(mobj.RatingNames);
+
+                    $("#summ").append('<br> <label> ' + mobj.EmployeeName + '<br> ' + mobj.SkillNames + ': '  + mobj.RatingNames+  '  ' + mobj.SkillNames + '</label>');
+
+                });
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+        alert("hello");
+    });
+    </script>
+<p id="summ"></p>
