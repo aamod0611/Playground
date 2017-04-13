@@ -1,0 +1,126 @@
+﻿
+<div>
+    <label>Select Categories :</label>
+    <select class="form-control" id="CategoryID" onchange="FillProduct()">
+        <option selected="selected">Select</option>
+    </select>
+</div>
+<div>
+    <label>Select Product :</label>
+    <select class="form-control" id="Product">
+        <option selected="selected">Select</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="OrderQuantity">OrderQuantity:</label>
+    <input type="text" class="form-control" id="OrderQuantity" placeholder="Enter OrderQuantity">
+</div>
+<div class="form-group">
+    <label for="Rate">Rate:</label>
+    <input type="text" class="form-control" id="Rate" placeholder="Enter Rate">
+</div>
+
+<button type="Submit" class="btn btn-default" onclick="add_details()">Submit</button>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    function add_details() {
+        $.ajax({
+            type: "post", //http post method
+            url: "http://localhost:62045/api/inventoryapi/PostSalesData",
+            data: { //passing data
+                CategoryID: $("#CategoryID").val(), //Reading text box values using Jquery
+                ProductID: $("#Product").val(),
+                OrderQuantity: $("#OrderQuantity").val(),
+                Rate: $("#Rate").val(),               
+            },
+
+        });
+        alert("SalesDetails");
+    }
+
+
+$(document).ready(function () {
+        debugger;
+
+@*$.get("@Url.Action("GetCategory", "InventoryApi")", function () {
+        alert("success");
+    })*@
+        alert("kl")
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetCategory", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+
+            //dataType: "json",
+            success: function (data) {
+            //  alert(data);
+
+            debugger;
+            var datavalue = data;
+            var myJsonObject = datavalue;
+            contentType: "application/json";
+            // alert(datavalue);
+            // alert(myJsonObject);
+
+            $.each(myJsonObject, function (i, mobj) {
+            alert(mobj.CategoryID);
+            $("#CategoryID").append('<option value="' + mobj.CategoryID + '">' + mobj.CategoryName +  '</option>');
+
+            });
+
+            },
+            error: function (xhr) {
+            alert(xhr.responseText);
+            }
+    });
+
+});
+
+
+
+    //$(document).ready(function () {
+    //    debugger;
+
+    @*$.get("@Url.Action("GetCategory", "InventoryApi")", function () {
+    alert("success");
+})*@
+    function FillProduct() {
+        var CatValue = $('#CategoryID').val();
+        alert(CatValue)
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetProductList", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+            data: { Prodvalue : CatValue },
+        //dataType: "json",
+        success: function (data) {
+            //  alert(data);
+
+            debugger;
+            var datavalue = data;
+            var myJsonObject = datavalue;
+            contentType: "application/json";
+            // alert(datavalue);
+            // alert(myJsonObject);
+            $("#Product").html(""); 
+            $.each(myJsonObject, function (i, mobj) {
+                alert(mobj.ProductName);
+                $("#Product").append('<option value="' + mobj.ProductID + '">' + mobj.ProductName + '</option>');
+
+            });
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    });
+
+    }
+
+
+    </script>
