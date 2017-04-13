@@ -1,0 +1,207 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <h2>Login Form</h2>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <input type="hidden" id="Empid" name="empid" />
+       
+       
+            <div class="form-group">
+                <label for="ProductCode">Product Code:</label>
+                <input type="text" class="form-control" id="ProductCode" placeholder="Enter ProductCode">
+            </div>
+            <div class="form-group">
+                <label for="ProductName">Product Name:</label>
+                <input type="text" class="form-control" id="ProductName" placeholder="Enter ProductName">
+            </div>
+            <div>
+                <label>Select Categories :</label>
+                <select class="form-control" id="CategoryID">
+                    <option selected="selected">Select</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="UnitPrice">UnitPrice:</label>
+                <input type="text" class="form-control" id="UnitPrice" placeholder="Enter UnitPrice">
+            </div>
+            <div class="form-group">
+                <label for="QtyInStock">QtyInStock:</label>
+                <input type="text" class="form-control" id="QtyInStock" placeholder="Enter QtyInStock">
+            </div>
+            <div class="form-group">
+                <label for="IsDiscontinued">IsDiscontinued:</label>
+                <input type="text" class="form-control" id="IsDiscontinued" placeholder="Enter IsDiscontinued">
+            </div>
+            <div class="form-group">
+                <label for="ReOrderLevel">ReOrderLevel:</label>
+                <input type="text" class="form-control" id="ReOrderLevel" placeholder="Enter ReOrderLevel">
+            </div>
+
+
+
+        <button type="Submit" class="btn btn-default" onclick="add_details()">Submit</button>
+
+
+    }
+</div>
+
+
+    <div style="text-align:center;">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul id="listdata">
+
+                </ul>
+            </div>
+            <input type="hidden" name="ID" id="hiddenID" value="">
+        </div>
+    </div>
+   
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        alert("bomm")
+        $.ajax({
+
+            type: "GET",
+            url: "http://localhost:62045/api/inventoryapi/GetProduct", //URI
+
+            dataType: "json",
+            success: function (data) {
+                debugger;
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+
+                $.each(myJsonObject, function (i, mobj) {
+                    $("#listdata").append('<li style="text-align: left;border: 1px solid gainsboro;padding: 10px;">' + mobj.ProductName +  "<input  type='button' id='Remove'  value='Remove' onclick='removeitem(" + mobj.ProductID + ")'/>" + "<input type='button' value='Update' value='Update' onclick='update_details(" + mobj.ProductID + ")'/>" + "<input type='button' id='Edit' value='Edit' id='edit' onclick='EditDetails(" + mobj.ProductID + "," + mobj.ProductCode + ",\"" + mobj.ProductName + "\"," + mobj.UnitPrice + "," + mobj.QtyInStock + "," + mobj.ReOrderLevel + ",\"" + mobj.IsDiscontinued + "\")'/>" + '</li>');
+
+                });
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+    });
+    function removeitem(id) //you are passing id from database using click function
+    {
+        alert("baba")
+        $.ajax({
+            type: "DELETE",
+            url: "@Url.Action("DeleteDetail", "api/InventoryApi")" + "/" + id,// "http://localhost:62045/api/inventoryapi/DeleteDetail" + "/" + ProductID,
+        });
+        alert("hi");
+    }
+
+    function add_details()
+        {
+            $.ajax({
+                type: "post", //http post method
+                url: "http://localhost:62045/api/inventoryapi/PostData",
+                data: { //passing data
+                    ProductCode: $("#ProductCode").val(), //Reading text box values using Jquery
+                    ProductName: $("#ProductName").val(),
+                    CategoryID: $("#CategoryID").val(),
+                    UnitPrice: $("#UnitPrice").val(),
+                    QtyInStock: $("#QtyInStock").val(),
+                    IsDiscontinued: $("#IsDiscontinued").val(),
+                    ReOrderLevel: $("#ReOrderLevel").val()
+                },
+
+            });
+            alert("hi");
+    }
+
+
+    function EditDetails(Id, ProductCode, ProductName, UnitPrice, QtyInStock, ReOrderLevel, IsDiscontinued) {
+        $('#ProductCode').val(ProductCode);
+        $('#ProductName').val(ProductName);
+        $('#CategoryID').val(CategoryID);
+        $('#UnitPrice').val(UnitPrice);
+        $('#QtyInStock').val(QtyInStock);
+        $('#IsDiscontinued').val(IsDiscontinued);
+        $('#ReOrderLevel').val(ReOrderLevel);
+
+        document.getElementById("hiddenID").value = Id;
+    }
+
+    function update_details(id) {
+        
+            var ProductName = JSON.stringify(document.getElementById('ProductName').value);
+            var UnitPrice = JSON.stringify(document.getElementById('UnitPrice').value);
+            var ProductCode = JSON.stringify(document.getElementById('ProductCode').value);
+            var QtyInStock = JSON.stringify(document.getElementById('QtyInStock').value);
+            var IsDiscontinued = JSON.stringify(document.getElementById('IsDiscontinued').value);
+            var ReOrderLevel = JSON.stringify(document.getElementById('ReOrderLevel').value);
+        
+        var Id = document.getElementById("hiddenID").value;
+
+        $.ajax({
+            type: "PUT", //HTTP Put Method
+            url:  "@Url.Action("EditDetails", "api/InventoryApi")" + "/" + id,
+            contentType: "application/json; charset=utf-8",
+            data: ProductName,
+            dataType: JSON,
+
+        });
+        alert("hello");
+    }
+
+
+
+
+    $(document).ready(function () {
+        debugger;
+
+        @*$.get("@Url.Action("GetCategory", "InventoryApi")", function () {
+            alert("success");
+        })*@
+        alert("kl")
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetCategory", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+
+            //dataType: "json",
+            success: function (data) {
+                     //  alert(data);
+
+                     debugger;
+                     var datavalue = data;
+                     var myJsonObject = datavalue;
+                     contentType: "application/json";
+                // alert(datavalue);
+                // alert(myJsonObject);
+
+                $.each(myJsonObject, function (i, mobj) {
+                    alert(mobj.CategoryID);
+                    $("#CategoryID").append('<option value="' + mobj.CategoryID + '">' + mobj.CategoryName +  '</option>');
+
+                     });
+
+                 },
+            error: function (xhr) {
+                     alert(xhr.responseText);
+                 }
+             });
+
+    });
+
+
+
+</script>
+
+
+
