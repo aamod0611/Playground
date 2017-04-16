@@ -1,0 +1,235 @@
+﻿@model InventoryProject.Models.OrderItem
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+<script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+
+
+@using (Html.BeginForm("Sales", "Home", FormMethod.Post))
+{
+<div>
+    <label>Select Categories :</label>
+    <select class="form-control qunt" id="CategoryID" onchange="FillProduct()">
+        <option selected="selected">Select</option>
+        @Html.ValidationMessageFor(m => m.CategoryID)
+    </select>
+</div>
+
+<div>
+    <label>Select Product :</label>
+    <select class="form-control qunt" id="Product">
+        <option selected="selected">Select</option>
+    </select>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.OrderQuantity)
+    <input type="number" class="form-control " id="OrderQuantity" placeholder="Enter OrderQuantity" min="1" onkeydown="return false">
+    <div id="quantity" class="hidden"></div>
+    @Html.ValidationMessageFor(m => m.OrderQuantity)
+</div>
+
+<div class="form-group">
+        @Html.LabelFor(m => m.Rate)
+        @Html.TextBoxFor(m => m.Rate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Rate)
+</div>
+<span id="discont"></span>
+
+
+
+
+
+
+@*<div class="form-group">
+    <label for="Rate">Rate:</label>
+    <input name="Rate" type="text" class="form-control text-box single-line" id="Rate" placeholder="Enter Rate" data-val="true" data-val-length="The field LastName must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The LastName field is required.">
+    @Html.ValidationMessageFor(model => model.Rate)
+</div>*@
+
+<button type="Submit" class="btn btn-default" onclick="add_details()">Submit</button>
+
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+    $(function () {
+        $(".qunt").click(function () {
+            //alert("laglo")
+            $("#OrderQuantity").val(function () { return true });
+        });
+});
+
+
+
+
+    function add_details() {
+        $.ajax({
+            type: "post", //http post method
+            url: "http://localhost:62045/api/InventoryApi/PostSalesData",
+            data: { //passing data
+                CategoryID: $("#CategoryID").val(), //Reading text box values using Jquery
+                ProductID: $("#Product").val(),
+                OrderQuantity: $("#OrderQuantity").val(),
+                Rate: $("#Rate").val(),
+            },
+            success: function (data) {
+                //  alert(data);
+            
+                debugger;
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+                    //if (p.IsDiscontinuedID == 1)
+                    //{ $("#discont").append("Error:"); }
+                    //alert("bare re 0");
+                    
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+                alert(p.IsDiscontinuedID)
+            }
+        });
+    }
+
+
+$(document).ready(function () {
+        debugger;
+
+@*$.get("@Url.Action("GetCategory", "InventoryApi")", function () {
+        alert("success");
+    })*@
+      //  alert("kl")
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetCategory", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+
+            //dataType: "json",
+            success: function (data) {
+            //  alert(data);
+
+            debugger;
+            var datavalue = data;
+            var myJsonObject = datavalue;
+            contentType: "application/json";
+            // alert(datavalue);
+            // alert(myJsonObject);
+
+            $.each(myJsonObject, function (i, mobj) {
+          //  alert(mobj.CategoryID);
+            $("#CategoryID").append('<option value="' + mobj.CategoryID + '">' + mobj.CategoryName +  '</option>');
+
+            });
+
+            },
+            error: function (xhr) {
+            alert(xhr.responseText);
+            }
+    });
+
+});
+
+
+
+    //$(document).ready(function () {
+    //    debugger;
+
+    @*$.get("@Url.Action("GetCategory", "InventoryApi")", function () {
+    alert("success");
+})*@
+    function FillProduct() {
+        var CatValue = $('#CategoryID').val();
+       // alert(CatValue)
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetProductList", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+            data: { Prodvalue : CatValue },
+        //dataType: "json",
+        success: function (data) {
+            //  alert(data);
+
+            debugger;
+            var datavalue = data;
+            var myJsonObject = datavalue;
+            contentType: "application/json";
+            // alert(datavalue);
+            // alert(myJsonObject);
+            $("#Product").html("");
+            $.each(myJsonObject, function (i, mobj) {
+              //  alert(mobj.ProductName);
+                $("#Product").append('<option value="' + mobj.ProductID + '">' + mobj.ProductName + '</option>');
+
+            });
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    });
+
+    }
+
+    //used this get method to get apropriate no of stock
+    $("#Product").blur(function () {
+    $.ajax({
+        type: "GET",
+        url: "@Url.Action("GetQuantity", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+        data: { id: $("#Product").val() },
+        //dataType: "json",
+        success: function (data) {
+            //  alert(data);
+
+            debugger;
+            var datavalue = data;
+            var myJsonObject = datavalue;
+            contentType: "application/json";
+            // alert(datavalue);
+            // alert(myJsonObject);
+            $("#OrderQuantity").attr({ max: myJsonObject, placeholder: myJsonObject });
+            $("#Rate").attr({ placeholder: myJsonObject });
+            
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    });
+
+});
+
+    $("#Product").blur(function () {
+        alert("rate")
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetRate", "api/InventoryApi")",
+        data: { id: $("#Product").val() },
+        //dataType: "json",
+        success: function (data) {
+            //  alert(data);
+            
+            debugger;
+            var datavalue = data;
+            var myJsonObject = datavalue;
+            contentType: "application/json";
+          //   alert(datavalue);
+          //   alert(myJsonObject);    
+            $("#Rate").attr({ placeholder: myJsonObject});
+            
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    });
+
+    });
+
+
+
+    </script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
