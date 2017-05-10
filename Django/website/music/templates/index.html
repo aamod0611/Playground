@@ -1,0 +1,25 @@
+{% extends 'base.html '%}
+
+{% block body %}
+
+<!-- whenever you are using Indexview that time by default you have to use object_list else mention in context name  -->
+{% if all_album %}
+	<ul>
+		{% for album in all_album %}
+		
+		<!-- details -->
+			<!-- <li><a href="/music/{{album.id}}">{{album.title}}</a></li> -->
+			<li><a href="{% url 'music:detail' album.id %}">{{album.title}}</a></li>
+			
+			<form action="{% url 'music:album-delete' album.id  %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<button type="submit">
+				<span class="glyphicon glyphicon-trash"></span>
+			<button>
+			{% endfor %}
+	</ul>
+{% else %}
+	<h3>you don't have any album</h3>
+{% endif %}
+
+{% endblock %}

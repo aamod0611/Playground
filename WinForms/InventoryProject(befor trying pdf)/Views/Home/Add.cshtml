@@ -1,0 +1,384 @@
+﻿@model  InventoryProject.Models.Product
+@{
+    ViewBag.Title = "Index";
+}
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js">
+</script>
+<link rel="stylesheet"
+      href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+      href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
+
+<div class="container" style="background-color: #f7f7f7;padding-bottom: 30px; border-radius: 15px;margin-top: 20px;">
+    <h4 style="padding-left: 15px;">PRODUCT ENTRY</h4>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <input type="hidden" id="Empid" name="empid" />
+        <div class="container">
+            <div class="row">           
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ProductCode)
+                        @Html.TextBoxFor(m => m.ProductCode, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ProductCode)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ProductName)
+                        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ProductName)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div>
+                        <label>Select Categories :</label>
+                        <select class="form-control" id="CategoryID">
+                            <option selected="selected">Select</option>
+                        </select>
+                    </div>
+                </div>              
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitPrice)
+                        @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UnitPrice)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.QtyInStock)
+                        @Html.TextBoxFor(m => m.QtyInStock, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.QtyInStock)
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div>
+                        <label>Select IsDiscontinued :</label>
+                        <select class="form-control" id="IsDiscontinuedID">
+                            <option selected="selected">Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ReOrderLevel)
+                        @Html.TextBoxFor(m => m.ReOrderLevel, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ReOrderLevel)
+                    </div>
+                </div>
+            </div>
+            <button type="Submit" style="background-color: #1d59ea;color: white;padding:5px 35px;border-radius: 9px;float: right;margin-right: 145px;" class="btn btn-default" onclick="add_details()">Submit</button>
+        </div>
+   
+   }
+</div>
+<div class="container" style="padding-top: 15px;">
+    <div class="row"style="padding-bottom: 20px;">
+        QuantityInStock Below ReOrderLevel :   <a href="/Home/DownloadCsv">Download CSV</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+<table id="table_id"
+       class="table table-condensed table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReOrderLevel)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody id="table_idd">
+    
+   </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+                    @*<div class="form-group">
+                <label for="ProductCode">Product Code:</label>
+                <input type="text" class="form-control" id="ProductCode" placeholder="Enter ProductCode">
+            </div>*@
+
+
+
+                    @*<div class="form-group">
+                <label for="ProductName">Product Name:</label>
+                <input type="text" class="form-control" id="ProductName" placeholder="Enter ProductName">
+            </div>*@
+
+
+
+
+
+
+                    @*<div class="form-group">
+                <label for="UnitPrice">UnitPrice:</label>
+                <input type="text" class="form-control" id="UnitPrice" placeholder="Enter UnitPrice">
+            </div>*@
+
+
+
+                    @*<div class="form-group">
+                <label for="QtyInStock">QtyInStock:</label>
+                <input type="text" class="form-control" id="QtyInStock" placeholder="Enter QtyInStock">
+            </div>*@
+
+
+
+
+                    @*<div class="form-group">
+                <label for="IsDiscontinued">IsDiscontinued:</label>
+                <input type="text" class="form-control" id="IsDiscontinued" placeholder="Enter IsDiscontinued">
+            </div>*@
+
+
+
+                   
+                    @*<div class="form-group">
+                <label for="ReOrderLevel">ReOrderLevel:</label>
+                <input type="text" class="form-control" id="ReOrderLevel" placeholder="Enter ReOrderLevel">
+            </div>*@
+
+
+
+               
+
+
+                @*<div class="container" style="text-align:center; margin-top: 26px;background-color: #f7f7f7;">
+                    <div class="row">
+                     
+                            <div id="listdata"></div>
+                      
+                        <input type="hidden" name="ID" id="hiddenID" value="">
+                    </div>
+                </div>*@
+
+
+
+
+
+               
+
+                <script type="text/javascript">
+
+                    $(document).ready(function () {
+                        // alert("bomm")
+                        $.ajax({
+
+                            type: "GET",
+                            url: "http://localhost:62045/api/inventoryapi/GetProduct", //URI
+                            async:false,
+                            dataType: "json",
+                            success: function (data) {
+                                debugger;
+                                var datavalue = data;
+                                var myJsonObject = datavalue;
+                                contentType: "application/json";
+
+                                $.each(myJsonObject, function (i, mobj) {
+                                    //$("#listdata").append('<div style="text-align: left;border: 1px solid gainsboro;padding: 10px;">' + mobj.ProductName + "<input  type='button' id='Remove'  value='Remove' onclick='removeitem(" + mobj.ProductID + ")'/>" + "<input type='button' id='Update' value='Update' value='Update' onclick='update_details(" + mobj.ProductID + ")'/>" + "<input type='button' id='Edit' value='Edit' id='edit' onclick='EditDetails(" + mobj.ProductID + "," + mobj.ProductCode + ",\"" + mobj.ProductName + "\"," + mobj.UnitPrice + "," + mobj.QtyInStock + "," + mobj.ReOrderLevel + ",\"" + mobj.IsDiscontinued + "\")'/>" + '</div>');
+                                    //$("#listdata").append('<tr><td>' + mobj.ProductName + +mobj.ProductCode + +mobj.QtyInStock + +mobj.ReOrderLevel + "<input  type='button' id='Remove'  value='Remove' onclick='removeitem(" + mobj.ProductID + ")'/>" + "<input type='button' id='Update' value='Update' value='Update' onclick='update_details(" + mobj.ProductID + ")'/>" + "<input type='button' id='Edit' value='Edit' id='edit' onclick='EditDetails(" + mobj.ProductID + "," + mobj.ProductCode + ",\"" + mobj.ProductName + "\"," + mobj.UnitPrice + "," + mobj.QtyInStock + "," + mobj.ReOrderLevel + ",\"" + mobj.IsDiscontinued + "\")'/>" + '</td></tr>');
+                                    $("#table_idd").append('<tr><td>' + mobj.ProductCode + '</td><td>' + mobj.ProductName + '</td><td>' + mobj.QtyInStock + '</td><td>' + mobj.ReOrderLevel + "<input  type='button' id='Remove'  value='Remove' onclick='removeitem(" + mobj.ProductID + ")'/>" + "<input type='button' id='Update' value='Update' value='Update' onclick='update_details(" + mobj.ProductID + ")'/>" + "<input type='button' id='Edit' value='Edit' id='edit' onclick='EditDetails(" + mobj.ProductID + "," + mobj.ProductCode + ",\"" + mobj.ProductName + "\"," + mobj.UnitPrice + "," + mobj.QtyInStock + "," + mobj.ReOrderLevel + ",\"" + mobj.IsDiscontinued + "\")'/>" + '</td></tr>')
+                                });
+
+                            },
+                            error: function (xhr) {
+                                alert(xhr.responseText);
+                            }
+                        });
+
+                    });
+
+
+
+                    $(document).ready(function () {
+                        // alert("discon")
+                        $.ajax({
+
+                            type: "GET",
+                            url: "http://localhost:62045/api/inventoryapi/GetIsDiscontinued", //URI
+
+                            dataType: "json",
+                            success: function (data) {
+                                debugger;
+                                var datavalue = data;
+                                var myJsonObject = datavalue;
+                                contentType: "application/json";
+
+                                $.each(myJsonObject, function (i, mobj) {
+                                    $("#IsDiscontinuedID").append('<option value="' + mobj.IsDiscontinuedID + '">' + mobj.IsDiscontinuedOptions + '</option>');
+
+                                });
+
+                            },
+                            error: function (xhr) {
+                                alert(xhr.responseText);
+                            }
+                        });
+
+                    });
+
+
+
+
+
+                    function removeitem(id) //you are passing id from database using click function
+                    {
+                        // alert("baba")
+                        $.ajax({
+                            type: "DELETE",
+                            url: "@Url.Action("DeleteDetail", "api/InventoryApi")" + "/" + id,// "http://localhost:62045/api/inventoryapi/DeleteDetail" + "/" + ProductID,
+                        });
+                        //alert("hi");
+                    }
+
+                    function add_details() {
+                        $.ajax({
+                            type: "post", //http post method
+                            url: "http://localhost:62045/api/inventoryapi/PostData",
+                            data: { //passing data
+                                ProductCode: $("#ProductCode").val(), //Reading text box values using Jquery
+                                ProductName: $("#ProductName").val(),
+                                CategoryID: $("#CategoryID").val(),
+                                UnitPrice: $("#UnitPrice").val(),
+                                QtyInStock: $("#QtyInStock").val(),
+                                IsDiscontinuedID: $("#IsDiscontinuedID").val(),
+                                ReOrderLevel: $("#ReOrderLevel").val()
+                            },
+
+                        });
+                        //  alert("hi");
+                    }
+
+
+                    function EditDetails(Id, ProductCode, ProductName, UnitPrice, QtyInStock, ReOrderLevel, IsDiscontinued) {
+                        $('#ProductCode').val(ProductCode);
+                        $('#ProductName').val(ProductName);
+                        $('#CategoryID').val(CategoryID);
+                        $('#UnitPrice').val(UnitPrice);
+                        $('#QtyInStock').val(QtyInStock);
+                        $('#IsDiscontinued').val(IsDiscontinued);
+                        $('#ReOrderLevel').val(ReOrderLevel);
+
+                        document.getElementById("hiddenID").value = Id;
+                    }
+
+                    function update_details(id) {
+                        alert(id)
+                        var x = {
+                           ProductName:document.getElementById('ProductName').value,
+                         UnitPrice:document.getElementById('UnitPrice').value,
+                         ProductCode:document.getElementById('ProductCode').value,
+                         QtyInStock:document.getElementById('QtyInStock').value,
+                        
+                         ReOrderLevel:document.getElementById('ReOrderLevel').value};
+
+                    
+
+                        $.ajax({
+                            type: "PUT", //HTTP Put Method
+                            url: "@Url.Action("EditDetails", "api/InventoryApi")" + "/" + id,
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(x),
+                            dataType: JSON,
+
+                        });
+                        // alert("hello");
+                    }
+
+
+
+
+                    $(document).ready(function () {
+                        debugger;
+
+                        @*$.get("@Url.Action("GetCategory", "InventoryApi")", function () {
+            alert("success");
+        })*@
+                        //alert("kl")
+                        $.ajax({
+                            type: "GET",
+                            url: "@Url.Action("GetCategory", "api/InventoryApi")",//"http://localhost:62045/api/InventoryApi/GetCategory", //URI
+
+                            //dataType: "json",
+                            success: function (data) {
+                                //  alert(data);
+
+                                debugger;
+                                var datavalue = data;
+                                var myJsonObject = datavalue;
+                                contentType: "application/json";
+                                // alert(datavalue);
+                                // alert(myJsonObject);
+
+                                $.each(myJsonObject, function (i, mobj) {
+                                    //          alert(mobj.CategoryID);
+                                    $("#CategoryID").append('<option value="' + mobj.CategoryID + '">' + mobj.CategoryName + '</option>');
+
+                                });
+
+                            },
+                            error: function (xhr) {
+                                alert(xhr.responseText);
+                            }
+                        });
+
+                    });
+
+
+
+                </script>
+
+
+
+
+@*<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js">
+</script>
+<link rel="stylesheet"
+      href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+      href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').dataTable({
+           "pagingType": "full_numbers",
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+           "scrollY"  : "400px"
+         });
+    });
+</script>
+
