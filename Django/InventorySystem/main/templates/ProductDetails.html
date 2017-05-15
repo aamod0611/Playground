@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProductDetails</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <form role="form" class="" action="" method="post" enctype="multipart/form-data">
+      	{% csrf_token %}
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+             <label>Product Code:</label>
+             <input type="text" class="form-control" id="ProductCode" placeholder="ProductCode" name="ProductCode">
+            </div>
+          </div>
+           <div class="col-sm-4">
+      <div class="form-group">
+      <label>ProductName:</label>
+      <input type="text" class="form-control hh" id="ProductName" placeholder="Product Name" name="ProductName">
+    </div>
+      </div>
+        <div class="col-sm-4">
+         <div class="form-group">
+          <label>Category:</label>
+          <input type="text" class="form-control" id="Category" placeholder="Category" name="Category">
+
+                 {% csrf_token %}
+            <select name="category_id">
+                {% for category in all_categories %}
+                    {{ category.CategoryName }}
+                 <option value="{{ category.id }}">{{ category.CategoryName }}</option>
+                {% endfor %}
+            </select>
+
+             <!--{{form.category}}-->
+         </div>
+       </div>
+      </div>
+        <div class="row">
+            <div class="col-sm-4">
+      <div class="form-group">
+      <label>UnitPrice:</label>
+      <input type="text" class="form-control" id="UnitPrice" placeholder="UnitPrice" name="UnitPrice">
+    </div>
+            </div>
+              <div class="col-sm-4">
+      <div class="form-group">
+      <label>QtyInStock:</label>
+      <input type="text" class="form-control" id="QtyInStock" placeholder="QtyInStock" name="QtyInStock">
+    </div>
+              </div>
+              <div class="col-sm-4">
+      <div class="form-group">
+      <label>IsDiscontinued:</label>
+      <input type="text" class="form-control" id="IsDiscontinued" placeholder="IsDiscontinued" name="IsDiscontinued">
+    </div>
+              </div>
+        </div>
+      <div class="row">
+            <div class="col-sm-4">
+      <div class="form-group">
+      <label>ReOrderLevel:</label>
+      <input type="text" class="form-control" id="ReOrderLevel" placeholder="ReOrderLevel" name="ReOrderLevel">
+    </div>
+            </div>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+
+</div>
+
+
+<!--this is not working because i cannot put add and display on same page even though i have made saperate view -->
+<!--{% if all_products %}-->
+<!--<ul>-->
+
+    <!--{% for product in all_products %}-->
+		<!--&lt;!&ndash; details &ndash;&gt;-->
+			<!--&lt;!&ndash; <li><a href="/music/{{album.id}}">{{album.title}}</a></li> &ndash;&gt;-->
+			<!--<li>{{product.ProductName}}-->
+            <!--<form action="{% url 'main:product-delete' product.id  %}" method="post" enctype="multipart/form-data">-->
+			<!--{% csrf_token %}-->
+			<!--<button type="submit">Delete</button>-->
+            <!--</form>-->
+            <!--</li>-->
+    <!--{% endfor %}-->
+<!--</ul>-->
+
+
+<!--{% else %}-->
+	<!--<h3>you don't have any Products</h3>-->
+<!--{% endif %}-->
+
+
+
+
+
+
+</body>
+
+</html>

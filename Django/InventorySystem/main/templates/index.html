@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+</head>
+<body>
+    <h3 style="font-weight: 700;">INVENTORY SYSTEM</h3>
+<div class="Operations" style="text-align: center;border:1px solid ; margin: 73px 280px;padding: 50px;background-color: beige;box-shadow: 7px 5px 8px #c3c57099;">
+    <div class="container">
+        <div class="row">
+            <button type="button" onclick="location.href='{% url 'main:product-Entry' %}'" style="font-size: 25px;padding: 25px 35px;border-radius: 20px;"> Product Entry</button>
+        </div>
+        <div class="row">
+            <button type="button" onclick="location.href='{% url 'main:Sales-Entry' %}'" style="font-size: 25px;padding: 25px 48px;margin-top: 30px;border-radius: 20px;"> Sales Entry</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% if all_products %}
+<ul>
+
+    {% for product in all_products %}
+		<!-- details -->
+			<!-- <li><a href="/music/{{album.id}}">{{album.title}}</a></li> -->
+			<li>{{product.ProductName}}
+            <form action="{% url 'main:product-delete' product.id  %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<button type="submit">Delete</button>
+            </form>
+            </li>
+    {% endfor %}
+</ul>
+
+
+{% else %}
+	<h3>you don't have any Products</h3>
+{% endif %}
+
+
+</body>
+</html>
