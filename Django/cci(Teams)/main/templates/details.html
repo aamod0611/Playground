@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<img src="{{TeamMembers.Pic.url}}">
+
+	<h4>Name:{{TeamMembers.Name}}</h4>
+	<h4>Designation:{{TeamMembers.Designation}}</h4>
+    <h4>Date-of-Birth:{{TeamMembers.DOB}}</h4>
+{% endblock %}

@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if teams %}
+	<ul>
+		{% for AllTeams in teams %}
+
+		<!-- details -->
+			<!-- <li><a href="/music/{{album.id}}">{{album.title}}</a></li> -->
+		<div class="container">
+			<div class="row">
+                <div class="col-sm-12">
+		<div class="profile">
+        <a href="{% url 'main:TeamDetails' AllTeams.id %}">{{AllTeams.TeamName}}</a>
+		<form action="{% url 'main:Teams-delete' AllTeams.id %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<button type="submit">
+				Delete
+			</button>
+         </form>
+         </div>
+        </div>
+
+		</div>
+			</div>
+	{% endfor %}
+	</ul>
+{% else %}
+	<h3>you don't have any album</h3>
+{% endif %}
+{% endblock %}
