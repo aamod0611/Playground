@@ -1,0 +1,22 @@
+.navbar {
+    border-radius: 0;
+}
+.indform{
+        text-align: center;
+}
+.indpic img {
+    height: 210px;
+        width: 285px;
+}
+.mid{
+text-align: center;
+}
+
+.Team-Details-info{
+    padding: 1px;
+background-color: wheat;
+}
+
+.space{
+padding-top: 20px;
+}
